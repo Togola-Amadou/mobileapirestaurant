@@ -6,6 +6,15 @@ from sqlalchemy.orm import Session
 
 Base.metadata.create_all(bind=engine)
 app = FastAPI()
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # tu peux mettre ton domaine ou "*"
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def get_db():
